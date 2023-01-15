@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinema manager</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+    <!-- Link to the bootstrap.min.css file -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"/>
+    
+    <!-- Link to the bootstrap.min.js file -->
+    <script src = "{% static 'bootstrap.min.js' % }"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1 class="text-center my-2">Update club</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card bg-info">
+                    <div class="card-body">
+                        <!-- Form for updating a club object in the database -->
+                        <form action="{% url 'do_update_std' std.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="md-2 my-2">
+                                <label for="roll">Club Name</label>
+                                <input name="std_roll" type="text" id="roll" class="form-control" required value="{{std.roll}}">
+                            </div>
+                            <div class="md-2">
+                                <label for="name">Club Rep</label>
+                                <input name="std_name" type="text" id="name" class="form-control" required value="{{std.name}}">
+                            </div>
+                            <div class="md-3 my-2">
+                                <label for="email">Email</label>
+                                <input name="std_email" type="email" id="email" class="form-control" required value="{{std.email}}">
+                            </div>
+                            <div class="md-3 my-2">
+                                <label for="address">Address</label>
+                                <textarea name="std_address" id="address" rows="5" class="form-control" required value = "{{std.address}}"></textarea>
+                            </div>
+                            <div class="md-3 my-2">
+                                <label for="phone">Contact No</label>
+                                <input name="std_phone" type="text" id="phone" class="form-control" required value="{{std.phone}}">                                
+                            </div>
+                            <div class="container text-center my-2">
+                                <button class="btn btn-primary">
+                                    Update Club
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

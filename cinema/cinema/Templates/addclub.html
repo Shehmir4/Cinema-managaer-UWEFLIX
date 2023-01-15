@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinema manager</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+    <!-- ----linked style.css file---- -->
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"/>
+    <script src = "{% static 'bootstrap.min.js' % }"></script>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1 class = "text-center my-2"> Add club <h1>
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-sm-8 offset-md-2">
+                <div class = "card bg-black">
+                    <div class = "card-body">
+                        <form action="/addclub/" method = "POST">
+                            {% csrf_token %}
+                            <div class = "md-2 my-2">
+                                <label for = "roll" style = "color:white;">Club Rep</label>
+                                <input name = "add_rollno" type = "text" id ="roll" class = "form-control" required>
+                            </div>
+                            <div class = "md-2">
+                                <label for = "name"style = "color:white;">Club Name </label>
+                                <input name = "add_name" type = "text" id  = "name" class = "form-control" required>
+                            </div>
+                            <div class = "md-3 my-2">
+                                <label for = "email"style = "color:white;">Email</label>
+                                <input name = "add_email" type = "email" id  = "email" class = "form-control">
+                            </div>
+                            <div class = "md-3 my-2">
+                                <label for = "address" style = "color:white;">Address</label>
+                                <textarea name = "add_address" id = "address" rows = "5" class ="form-control" ></textarea>
+                            </div>
+                            <div class = "md-3 my-2">
+                                <label for = "phone" style = "color:white;">Contact No</label>
+                                <input name = "add_phone" type = "text" id = "phone" class = "form-control">                                
+                            </div>
+                            <div class = "container text-center my-2">
+                                <button class = "btn btn-primary">
+                                    Add 
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
